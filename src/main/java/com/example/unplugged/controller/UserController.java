@@ -86,18 +86,6 @@ public class UserController {
         return "user/event";
     }
 
-    @GetMapping("/user/event/eventadd")
-    public String dispEventWrite(@AuthenticationPrincipal MemberUser user, Model model) {
-        /* 임시로 해제했어요 - 호준
-        if (user == null) {
-            return "redirect:/login";
-        }
-        */
-
-        model.addAttribute("user", user);
-        return "user/eventadd";
-    }
-
     @GetMapping("/user/notice")
     public String dispNotice(@AuthenticationPrincipal MemberUser user, Model model) {
 
