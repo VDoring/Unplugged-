@@ -81,8 +81,9 @@
                 selectable: true, // 달력 일자 드래그 설정가능
                 nowIndicator: true, // 현재 시간 마크
                 dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
-                eventLongPressDelay:100, //event가 draggable 하게 만들기 위해 걸리는 시간
-                selectLongPressDelay:0, //date가 select 하게 만들기 위해 걸리는 시간
+                longPressDelay:1000,
+                eventLongPressDelay:1000, //event가 draggable 하게 만들기 위해 걸리는 시간
+                selectLongPressDelay:100, //date가 select 하게 만들기 위해 걸리는 시간
                 locale: 'ko', // 한국어 설정
 
                 eventAdd: function(obj) { // 이벤트가 추가되면 발생하는 이벤트
@@ -94,7 +95,50 @@
                 eventRemove: function(obj){ // 이벤트가 삭제되면 발생하는 이벤트
                     console.log(obj);
                 },
+                dateClick: async function(obj){  // (모바일에서 작동) 스케줄 내용 추가 알림창. 스케줄 추가 이후 드래그로 이벤트를 생성할 수 있다.
+                    var filter = "win16|win32|win64|mac|macintel";
+
+                    if ( navigator.platform ) {
+                        if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
+                            console.log('모바일 접속 확인.');
+
+                            console.log("dateClick 이벤트 시작!")
+                            var title;
+
+                            // 지금 해결해야 할 문제 : 모바일에서 날짜 터지 시, 스케줄 입력란이 켜졌다 바로 사라지는 오류
+                            await Swal.fire({
+                                title:'스케줄 추가',
+                                html: '<input type="text" id="schedule_title" class="swal2-input" placeholder="스케줄 제목을 입력하세요">',
+                                focusConfirm: false,
+                                showCancelButton: true,
+                                confirmButtonText: '확인',
+                                cancelButtonText: '취소',
+                                preConfirm: () => {
+                                    var schedule_title = Swal.getPopup().querySelector('#schedule_title').value
+                                    if(!schedule_title)
+                                        Swal.showValidationMessage(`입력되지 않았습니다`)
+                                    else
+                                        title = schedule_title
+                                }
+                            })
+
+                            if (title) {
+                                calendar.addEvent({
+                                    title: title,
+                                    start: arg.start,
+                                    end: arg.end,
+                                    allDay: arg.allDay
+                                })
+                            }
+                            calendar.unselect()
+                            console.log("dateClick 이벤트 끝!")
+                        } else {
+                            console.log('컴퓨터 접속 확인. dateClick 이벤트 비활성화됨.');
+                        }
+                    }
+                },
                 select: async function(arg) { // 스케줄 내용 추가 알림창. 스케줄 추가 이후 드래그로 이벤트를 생성할 수 있다.
+                    console.log("select 이벤트 시작!")
                     var title;
 
                     // 지금 해결해야 할 문제 : 모바일에서 날짜 터지 시, 스케줄 입력란이 켜졌다 바로 사라지는 오류
@@ -123,7 +167,7 @@
                         })
                     }
                     calendar.unselect()
-                    console.log("이벤트 끝!")
+                    console.log("select 이벤트 끝!")
                 },
 
                 // 샘플용 이벤트들
