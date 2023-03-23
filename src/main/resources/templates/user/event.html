@@ -188,6 +188,14 @@
                     console.log("select 이벤트 끝!")
                 },
 
+                eventClick: function(info) {
+                    alert('Event: ' + info.event.title);
+                    alert('Start: ' + info.event.start + '\nEnd: ' + info.event.end)
+
+                    // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+                    // alert('View: ' + info.view.type);
+                },
+
                 // 샘플용 이벤트들
                 events: [{
                     title: 'Repeating Event',
