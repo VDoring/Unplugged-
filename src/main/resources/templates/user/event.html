@@ -145,10 +145,8 @@
                     await Swal.fire({
                         title:'스케줄 추가',
                         html: '<input type="text" id="schedule_title" class="swal2-input" placeholder="스케줄 내용 입력">'
-                            + '<input type="date" id="schedule_date_start" class="swal2-input" value=\'2023-02-10\' placeholder="날짜">'
-                            + '<input type="date" id="schedule_date_end" class="swal2-input" value=\'2023-02-12\' placeholder="날짜">'
-                            + '<input type="time" id="schedule_time_start" class="swal2-input" placeholder="시간">'
-                            + '<input type="time" id="schedule_time_end" class="swal2-input" placeholder="시간">',
+                            + '<input type="date" id="schedule_date_start" class="swal2-input" placeholder="날짜">'
+                            + '<input type="date" id="schedule_date_end" class="swal2-input" placeholder="날짜">',
                         focusConfirm: false,
                         showCancelButton: true,
                         confirmButtonText: '확인',
@@ -157,16 +155,12 @@
                             var schedule_title = Swal.getPopup().querySelector('#schedule_title').value
                             var schedule_date_start = Swal.getPopup().querySelector('#schedule_date_start').value
                             var schedule_date_end = Swal.getPopup().querySelector('#schedule_date_end').value
-                            var schedule_time_start = Swal.getPopup().querySelector('#schedule_time_start').value
-                            var schedule_time_end = Swal.getPopup().querySelector('#schedule_time_end').value
                             if(!schedule_title)
                                 Swal.showValidationMessage(`내용이 입력되지 않았습니다`)
                             else {
                                 title = schedule_title
                                 date_start = schedule_date_start
                                 date_end = schedule_date_end
-                                time_start = schedule_time_start
-                                time_end = schedule_time_end
                             }
                         }
                     })
@@ -175,9 +169,6 @@
                         console.log(title)
                         console.log(date_start)
                         console.log(date_end)
-                        console.log(time_start)
-                        console.log(time_end)
-
                         if(time_start)
                             date_start = date_start + "T" + time_start
                         if(time_end)
@@ -200,24 +191,12 @@
                 // 샘플용 이벤트들
                 events: [{
                     title: 'Repeating Event',
-                    start: '2023-02-20T16:00:00',
-                    end: '2023-02-22T17:00:00'
+                    start: '2023-03-20T16:00:00',
+                    end: '2023-03-22T17:00:00'
                 }, {
                     title: 'Repeating Event 2',
-                    start: '2023-02-20T16:00:00',
-                    end: '2023-02-21T17:00:00'
-                }, {
-                    title: 'Pre Event',
-                    start: '2023-02-23T08:00:00',
-                    end: '2023-02-23T10:00:00'
-                }, {
-                    title: 'News Event',
-                    start: '2023-02-24T16:00:00',
-                    end: '2023-02-24T17:00:00'
-                }, {
-                    title: 'Olds Event',
-                    start: '2023-02-24T17:00:00',
-                    end: '2023-02-24T19:00:00'
+                    start: '2023-03-20T16:00:00',
+                    end: '2023-03-21T17:00:00'
                 }]
                 // events: [
                 //     {
