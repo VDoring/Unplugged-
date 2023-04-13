@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>투표하기</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+<!-- HEADER -->
+<!--<div th:insert="common/header.html" class="header"></div>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>게시판</title>-->
+<!--    <style>-->
+<!--        table {-->
+<!--            border-collapse: collapse;-->
+<!--            margin-top: 20px;-->
+<!--            margin-bottom: 20px;-->
+<!--            width: 80%;-->
+<!--            border: 1px solid black;-->
+<!--        }-->
+<!--        th, td {-->
+<!--            padding: 10px;-->
+<!--            text-align: center;-->
+<!--            border: 1px solid black;-->
+<!--        }-->
+<!--        th {-->
+<!--            background-color: #f2f2f2;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>번호</th>-->
+<!--        <th>제목</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr>-->
+<!--        <td>1</td>-->
+<!--        <td>첫 번째 글입니다.</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>2</td>-->
+<!--        <td>두 번째 글입니다.</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>3</td>-->
+<!--        <td>세 번째 글입니다.</td>-->
+<!--    </tr>-->
+<!--    &lt;!&ndash; 이하 생략 &ndash;&gt;-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<!--<script type="text/javascript">-->
+<!--    var num = 4; // 새로운 글이 올라갈 때마다 1식 증가-->
+<!--    var table = document.querySelector('table');-->
+<!--    var tbody = table.querySelector('tbody');-->
+
+<!--    function addRow() {-->
+<!--        var row = tbody.insertRow();-->
+<!--        var cell1 = row.insertCell(0);-->
+<!--        var cell2 = row.insertCell(1);-->
+<!--        cell1.innerHTML = num++;-->
+<!--        cell2.innerHTML = '새로운 글입니다.';-->
+<!--    }-->
+<!--</script>-->
+
+<!--<button onclick="addRow()">글쓰기</button>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Bulletin Board</title>-->
+<!--    <style>-->
+<!--        /* Define styles for bulletin board */-->
+<!--        .board {-->
+<!--            border: 2px solid black;-->
+<!--            padding: 10px;-->
+<!--            margin: 20px;-->
+<!--        }-->
+<!--        .board th, .board td {-->
+<!--            padding: 5px;-->
+<!--            text-align: left;-->
+<!--        }-->
+<!--        .write-button {-->
+<!--            float: right;-->
+<!--        }-->
+<!--        .search-box {-->
+<!--            margin-top: 20px;-->
+<!--            text-align: center;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="board">-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Number</th>-->
+<!--            <th>Title</th>-->
+<!--            <th>Author</th>-->
+<!--            <th>Views</th>-->
+<!--            <th>Date</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr>-->
+<!--            <td>1</td>-->
+<!--            <td><a href="#">Lorem ipsum dolor sit amet</a></td>-->
+<!--            <td>John Doe</td>-->
+<!--            <td>10</td>-->
+<!--            <td>2022-01-01</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>2</td>-->
+<!--            <td><a href="#">Consectetur adipiscing elit</a></td>-->
+<!--            <td>Jane Smith</td>-->
+<!--            <td>5</td>-->
+<!--            <td>2022-01-02</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>3</td>-->
+<!--            <td><a href="#">Sed do eiusmod tempor incididunt</a></td>-->
+<!--            <td>Bob Johnson</td>-->
+<!--            <td>20</td>-->
+<!--            <td>2022-01-03</td>-->
+<!--        </tr>-->
+<!--        &lt;!&ndash; Add more rows as needed &ndash;&gt;-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--    <div class="write-button">-->
+<!--        <button type="button">Write</button>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="search-box">-->
+<!--    <label for="search">Search:</label>-->
+<!--    <input type="text" id="search" name="search">-->
+<!--    <button type="button">Go</button>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Bulletin Board</title>-->
+<!--    <style>-->
+<!--        /* Set the border of the bulletin board */-->
+<!--        .bulletin-board {-->
+<!--            border: 1px solid black;-->
+<!--            padding: 10px;-->
+<!--            margin: 20px;-->
+<!--        }-->
+<!--        /* Style the table used to display the posts */-->
+<!--        table {-->
+<!--            width: 100%;-->
+<!--            border-collapse: collapse;-->
+<!--        }-->
+<!--        th, td {-->
+<!--            text-align: left;-->
+<!--            padding: 8px;-->
+<!--            border-bottom: 1px solid #ddd;-->
+<!--        }-->
+<!--        th {-->
+<!--            background-color: #f2f2f2;-->
+<!--        }-->
+<!--        /* Style the pagination links */-->
+<!--        .pagination {-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--        }-->
+<!--        .pagination a {-->
+<!--            color: black;-->
+<!--            float: left;-->
+<!--            padding: 8px 16px;-->
+<!--            text-decoration: none;-->
+<!--            transition: background-color .3s;-->
+<!--        }-->
+<!--        .pagination a.active {-->
+<!--            background-color: #4CAF50;-->
+<!--            color: white;-->
+<!--        }-->
+<!--        .pagination a:hover:not(.active) {-->
+<!--            background-color: #ddd;-->
+<!--        }-->
+<!--        /* Style the search bar */-->
+<!--        .search-bar {-->
+<!--            margin-top: 20px;-->
+<!--            text-align: center;-->
+<!--        }-->
+<!--        input[type=text] {-->
+<!--            width: 50%;-->
+<!--            padding: 12px 20px;-->
+<!--            margin: 8px 0;-->
+<!--            box-sizing: border-box;-->
+<!--            border: 2px solid #ccc;-->
+<!--            border-radius: 4px;-->
+<!--            font-size: 16px;-->
+<!--            background-color: white;-->
+<!--        }-->
+<!--        input[type=submit] {-->
+<!--            background-color: #4CAF50;-->
+<!--            color: white;-->
+<!--            padding: 12px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+<!--        input[type=submit]:hover {-->
+<!--            background-color: #45a049;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="bulletin-board">-->
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>Number</th>-->
+<!--            <th>Title</th>-->
+<!--            <th>Author</th>-->
+<!--            <th>Views</th>-->
+<!--            <th>Date</th>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>1</td>-->
+<!--            <td><a href="#">Post Title</a></td>-->
+<!--            <td>John Doe</td>-->
+<!--            <td>100</td>-->
+<!--            <td>April 14, 2023</td>-->
+<!--        </tr>-->
+<!--        &lt;!&ndash; More posts here &ndash;&gt;-->
+<!--    </table>-->
+<!--    <div class="pagination">-->
+<!--        <a href="#">&laquo; Previous</a>-->
+<!--        <a class="active" href="#">1</a>-->
+<!--        <a href="#">2</a>-->
+<!--        <a href="#">3</a>-->
+<!--        <a href="#">4</a>-->
+<!--        <a href="#">5</a>-->
+<!--        <a href="#">Next &raquo;</a>-->
+<!--    </div>-->
+<!--    <div style="text-align: right;">-->
+<!--        <button>Write</button>-->
+<!--    </div>-->
+<!--    <div class="search-bar">-->
+<!--        <form>-->
+<!--            <label for="search-input">Search:</label>-->
+<!--            <input type="text" id="search-input" name="search-input">-->
+<!--            <input type="submit" value="Submit">-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<html>
+<head>
+    <link rel="stylesheet" th:href="@{/css/vote.css}">
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 5px;
+        }
+
+        #write {
+            float: right;
+        }
+
+        #search {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>안녕하세요</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>이거 질문좀</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Hello olleH Hello</td>
+    </tr>
+</table>
+
+<div id="write">
+    <button>Write</button>
+</div>
+
+<div id="pagination">
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+</div>
+
+<div id="search">
+    <input type="text" placeholder="Search...">
+    <button>Search</button>
+</div>
+
+<script>
+    // This is a sample script to handle pagination and search
+    // You may need to modify it according to your needs
+
+    // Get the table element
+    var table = document.getElementsByTagName("table")[0];
+
+    // Get the pagination links
+    var links = document.getElementById("pagination").getElementsByTagName("a");
+
+    // Get the search input and button
+    var input = document.getElementById("search").getElementsByTagName("input")[0];
+    var button = document.getElementById("search").getElementsByTagName("button")[0];
+
+    // Define a function to load the posts for a given page number
+    function loadPosts(page) {
+        // Clear the table rows except the header
+        while (table.rows.length > 1) {
+            table.deleteRow(1);
+        }
+
+        // Fetch the posts from the server using the page number as a parameter
+        // You may need to change the url and the format of the response
+        fetch("https://example.com/posts?page=" + page)
+            .then(response => response.json())
+            .then(data => {
+                // Loop through the data and create a new row for each post
+                for (var i = 0; i < data.length; i++) {
+                    var row = table.insertRow();
+                    var cell1 = row.insertCell();
+                    var cell2 = row.insertCell();
+                    cell1.innerHTML = data[i].number;
+                    cell2.innerHTML = data[i].title;
+                }
+            })
+            .catch(error => console.error(error));
+    }
+
+    // Define a function to search for posts by keyword
+    function searchPosts(keyword) {
+        // Clear the table rows except the header
+        while (table.rows.length > 1) {
+            table.deleteRow(1);
+        }
+
+        // Fetch the posts from the server using the keyword as a parameter
+        // You may need to change the url and the format of the response
+        fetch("https://example.com/posts?keyword=" + keyword)
+            .then(response => response.json())
+            .then(data => {
+                // Loop through the data and create a new row for each post
+                for (var i = 0; i < data.length; i++) {
+                    var row = table.insertRow();
+                    var cell1 = row.insertCell();
+                    var cell2 = row.insertCell();
+                    cell1.innerHTML = data[i].number;
+                    cell2.innerHTML = data[i].title;
+                }
+            })
+            .catch(error => console.error(error));
+    }
+
+    // Add event listeners to the pagination links
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function(event) {
+            // Prevent the default action of the link
+            event.preventDefault();
+
+            // Get the page number from the link text
+            var page = event.target.textContent;
+
+            // Load the posts for that page
+            loadPosts(page);
+        });
+    }
+
+    // Add event listener to the search button
+    button.addEventListener("click", function(event) {
+        // Prevent the default action of the button
+        event.preventDefault();
+
+        // Get the keyword from the input value
+        var keyword = input.value;
+
+        // Search for posts by that keyword
+        searchPosts(keyword);
+    });
+</script>
+
+</body>
+</html>
+
+
+<!-- FOOTER -->
+<div th:insert="common/footer.html" class="footer"></div>
+
+</body>
+</html>

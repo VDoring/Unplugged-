@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html>
+<div th:insert="common/header.html" class="header"></div>
 <head>
     <meta charset='utf-8' />
     <!-- 화면 해상도에 따라 글자 크기 대응(모바일 대응) -->
@@ -105,32 +106,54 @@
                             console.log("dateClick 이벤트 시작!")
                             var title;
 
+                            var title;
+                            var date_start, date_end;
+                            var time_start, time_end;
+
                             await Swal.fire({
                                 title:'스케줄 추가',
-                                html: '<input type="text" id="schedule_title" class="swal2-input" placeholder="스케줄 제목을 입력하세요">',
+                                html: '<input type="text" id="schedule_title" class="swal2-input" placeholder="스케줄 내용 입력">'
+                                    + '<input type="date" id="schedule_date_start" class="swal2-input" placeholder="날짜">'
+                                    + '<input type="date" id="schedule_date_end" class="swal2-input" placeholder="날짜">',
                                 focusConfirm: false,
                                 showCancelButton: true,
                                 confirmButtonText: '확인',
                                 cancelButtonText: '취소',
                                 preConfirm: () => {
                                     var schedule_title = Swal.getPopup().querySelector('#schedule_title').value
+                                    var schedule_date_start = Swal.getPopup().querySelector('#schedule_date_start').value
+                                    var schedule_date_end = Swal.getPopup().querySelector('#schedule_date_end').value
                                     if(!schedule_title)
-                                        Swal.showValidationMessage(`입력되지 않았습니다`)
-                                    else
+                                        Swal.showValidationMessage(`내용이 입력되지 않았습니다`)
+                                    else {
                                         title = schedule_title
+                                        date_start = schedule_date_start
+                                        date_end = schedule_date_end
+                                    }
                                 }
                             })
 
                             if (title) {
+                                console.log(title)
+                                console.log(date_start)
+                                console.log(date_end)
+                                if(time_start)
+                                    date_start = date_start + "T" + time_start
+                                if(time_end)
+                                    date_end = date_end + "T" + time_end
+
+                                console.log(date_start)
+                                console.log(date_end)
+
                                 calendar.addEvent({
                                     title: title,
-                                    start: arg.start,
-                                    end: arg.end,
+                                    start: date_start,
+                                    end: date_end,
                                     allDay: arg.allDay
                                 })
                             }
                             calendar.unselect()
-                            console.log("dateClick 이벤트 끝!")
+                            console.log("select 이벤트 끝!")
                         } else {
                             console.log('컴퓨터 접속 확인. dateClick 이벤트 비활성화됨.');
                         }
@@ -288,6 +311,7 @@
 </script>
 </body>
 </html>
+
 
 
 
