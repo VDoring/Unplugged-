@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>투표하기</title>
-    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/vote.css}">
 </head>
 <body>
 
@@ -187,7 +187,7 @@
         // 결과 셀을 생성하고 내용을 추가함
         var resultCell = document.createElement("td");
 
-// 결과 셀에 투표 결과를 보여주는 요소를 추가함
+        // 결과 셀에 투표 결과를 보여주는 요소를 추가함
         var result = document.createElement("div");
         var result1Span = document.createElement("span");
         var result2Span = document.createElement("span");
@@ -198,8 +198,8 @@
         result.appendChild(result2Span);
         resultCell.appendChild(result);
 
-// 투표 게시글 객체에 결과 셀을 참조하는 속성을 추가함
-// 투표 결과를 업데이트할 때 사용함
+        // 투표 게시글 객체에 결과 셀을 참조하는 속성을 추가함
+        // 투표 결과를 업데이트할 때 사용함
         post.resultCell = resultCell;
 
         // 새로운 행에 셀을 추가함
