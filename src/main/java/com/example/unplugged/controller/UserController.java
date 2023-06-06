@@ -7,12 +7,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 
@@ -97,6 +94,19 @@ public class UserController {
 
         model.addAttribute("user", user);
         return "user/vote";
+    }
+
+    @GetMapping("/votecreate")
+    public String dispVoteCreate(@AuthenticationPrincipal MemberUser user, Model model) {
+
+        /* 임시로 해제했어요 - 호준
+        if (user == null) {
+            return "redirect:/login";
+        }
+        */
+
+        model.addAttribute("user", user);
+        return "user/votecreate";
     }
 
     @GetMapping("/user/notice")
