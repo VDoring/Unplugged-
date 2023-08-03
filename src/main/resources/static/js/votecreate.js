@@ -50,18 +50,21 @@ function deleteOption(index) {
 
 // 투표 제출
 function submitVote() {
-    if (options.length === 0) {
-        alert('투표 선택지를 추가하세요.');
+    if (options.length < 2) {
+        alert('투표 선택지를 최소 2개 이상 추가하세요.');
         return;
     }
-
-    var selectedOption = document.querySelector('input[name="voteOption"]:checked');
-    if (selectedOption) {
-        alert('선택한 옵션: ' + selectedOption.value);
-        // 여기에 투표 제출에 대한 추가 로직을 작성할 수 있습니다.
-    } else {
-        alert('투표 선택지를 선택하세요.');
+    else {
+        alert('게시판으로 돌아가는 코드 작성하기')
     }
+
+    // var selectedOption = document.querySelector('input[name="voteOption"]:checked');
+    // if (selectedOption) {
+    //     alert('선택한 옵션: ' + selectedOption.value);
+    //     // 여기에 투표 제출에 대한 추가 로직을 작성할 수 있습니다.
+    // } else {
+    //     alert('투표 선택지를 선택하세요.');
+    // }
 }
 
 // 초기 선택지 표시
